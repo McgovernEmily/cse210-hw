@@ -14,6 +14,7 @@ class Program
         Scripture scripture = new Scripture
         (
             // The scripture.
+            // If change reference go book, chapter, startverse, endverse.
             new Reference("John", 3, 16), new List<string> 
             {
                 "For", "God", "so", "loved", "the", "world", "that", "he", "gave", 
