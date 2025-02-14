@@ -9,8 +9,6 @@ using System.Security.Cryptography.X509Certificates;
 
 class Program
 {
-    // private static bool _answer = false;
-
         static void Main(string[] args)
     {
         string selection = "";
