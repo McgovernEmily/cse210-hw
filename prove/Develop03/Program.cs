@@ -3,9 +3,6 @@
 // and if they can't figure it out the user can hit enter and see either 1-4 word from the scripture.
 
 using System;
-using System.IO.Pipes;
-using System.Reflection.Metadata.Ecma335;
-using System.Security.Cryptography.X509Certificates;
 
 class Program
 {
