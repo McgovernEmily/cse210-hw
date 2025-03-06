@@ -12,7 +12,7 @@ class Program
         shapes.Add(num);
 
         // Where to get the rectangle area.
-        Rectangle num2 = new Rectangle("Chocolate", 5 , 5);
+        Rectangle num2 = new Rectangle("Chocolate", 5, 5);
         shapes.Add(num2);
 
         // Where to get the circle area.

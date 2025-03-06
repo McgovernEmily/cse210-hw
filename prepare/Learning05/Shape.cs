@@ -1,4 +1,4 @@
-public abstract class Shape 
+public abstract class Shape
 {
     private string _color;
 
