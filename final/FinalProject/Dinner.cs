@@ -12,7 +12,7 @@ public class Dinner : Meal
         // Asking user if they had chicken.
         Console.WriteLine("Did you eat chicken for Dinner (YES or NO)?");
 
-        if (Console.ReadLine() == "YES" | Console.ReadLine() == "yes")
+        if (Console.ReadLine().ToUpper() == "YES")
         {
             Console.WriteLine("How much in grams did you eat? ");
             _protein += int.Parse(Console.ReadLine()) * 0.27;

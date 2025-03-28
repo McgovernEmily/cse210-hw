@@ -95,6 +95,7 @@ class Program
             }
             else if (selection == "5")
             {
+                Console.WriteLine("GoodBye!!");
                 break;
             }
         }
