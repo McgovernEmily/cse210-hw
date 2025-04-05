@@ -195,7 +195,7 @@ class Program
                 }
                 else
                 {
-                    Console.WriteLine($"You need {proteinGoal - total} grams to reach your goal.");
+                    Console.WriteLine($"You need {Math.Round(proteinGoal - total)} grams to reach your goal.");
                 }
             }
 
