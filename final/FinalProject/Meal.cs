@@ -17,6 +17,11 @@ public abstract class Meal
         return _protein;
     }
 
+    public void SetProtein(double protein)
+    {
+        _protein = protein;
+    }
+
     // The abstract for entering a meals details.
     public abstract void EnterMealDetails();
 }

@@ -11,8 +11,12 @@ public class Snack : Meal
     public override void EnterMealDetails()
     {
         // Protein intake from a Snack.
-        Console.WriteLine("Enter protein content for the Snack (in grams)? ");
-        int tooMuch = int.Parse(Console.ReadLine());
+        Console.WriteLine("Enter protein content for the Snack (grams)? ");
+        double tooMuch;
+        while (!double.TryParse(Console.ReadLine(), out tooMuch))
+        {
+            Console.Write("Not correct. protein content for Snack (grams)? ");
+        }
 
         // Adding it to the total protein.
         _protein += tooMuch;

@@ -19,6 +19,11 @@ public class Tracker
     // Comparing if the total protein is reaching the goal.
     public string GetProgress()
     {
-        return $"Total Protein: {_totalProtein}/{_goalProtein} games.";
+        return $"Total Protein: {_totalProtein}/{_goalProtein} grams.";
+    }
+    public string ResetProtein()
+    {
+        _totalProtein = 0;
+        return $"Total Protein: {_totalProtein}/{_goalProtein} grams.";
     }
 }

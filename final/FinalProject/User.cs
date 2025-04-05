@@ -35,10 +35,18 @@ public class User
         return _proteinGoal;
     }
 
-    // This will calculate a protein recommendation based on the user's weight and activity level.
-    public string CalculateProtein()
+    // Calculate a protein recommendation based on the user's weight and activity level.
+    public static double CalculateProtein(double weight, int activity)
     {
-        return $"Still working on it";
+        double proteinRecommend = activity switch
+        {
+            1 or 2 => 0.8,
+            3 or 4 => 1.2,
+            5 => 1.8,
+            _ => 1.0
+        };
+
+        return weight * proteinRecommend;
     }
 
 }

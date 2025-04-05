@@ -1,3 +1,5 @@
+using System.Diagnostics.Contracts;
+
 public class MealTracker
 {
     private List<Meal> _meals;
@@ -23,15 +25,15 @@ public class MealTracker
             case "breakfast":
                 meal = new Breakfast();
                 break;
-            
+
             case "lunch":
                 meal = new Lunch();
                 break;
-            
+
             case "dinner":
                 meal = new Dinner();
                 break;
-            
+
             case "snack":
                 meal = new Snack();
                 break;
@@ -40,5 +42,15 @@ public class MealTracker
         // Adding the meal to the list.
         meal.EnterMealDetails();
         _meals.Add(meal);
+    }
+
+    public List<Meal> GetMeals()
+    {
+        return _meals;
+    }
+
+    public void ClearMeal()
+    {
+        _meals.Clear();
     }
 }

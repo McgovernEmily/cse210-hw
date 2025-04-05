@@ -5,10 +5,15 @@ public class Lunch : Meal
 
     }
 
-    // Protein intake for lunch. Want to add something special to this one. 
+    // Protein intake for lunch.
     public override void EnterMealDetails()
     {
-        Console.WriteLine("Enter amount of protein you ate for lunch (grams)?");
-        _protein += int.Parse(Console.ReadLine());
+        Console.WriteLine("Enter amount of protein you ate for Lunch (grams)?");
+        double lGrams;
+        while (!double.TryParse(Console.ReadLine(), out lGrams))
+        {
+            Console.Write("Not correct. Amount of protein you ate for Lunch (grams)? ");
+        }
+        _protein += lGrams;
     }
 }
