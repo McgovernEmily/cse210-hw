@@ -44,11 +44,13 @@ public class MealTracker
         _meals.Add(meal);
     }
 
+    // Getting meals.
     public List<Meal> GetMeals()
     {
         return _meals;
     }
 
+    // Clearing the meals in the list.
     public void ClearMeal()
     {
         _meals.Clear();

@@ -17,6 +17,7 @@ public abstract class Meal
         return _protein;
     }
 
+    // Setting the _protein to protein.
     public void SetProtein(double protein)
     {
         _protein = protein;

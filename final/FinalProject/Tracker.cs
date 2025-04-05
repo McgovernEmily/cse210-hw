@@ -21,6 +21,8 @@ public class Tracker
     {
         return $"Total Protein: {_totalProtein}/{_goalProtein} grams.";
     }
+
+    // Resetting the protein total for the protein goal.
     public string ResetProtein()
     {
         _totalProtein = 0;

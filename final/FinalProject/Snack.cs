@@ -3,6 +3,8 @@ using System.Runtime.ConstrainedExecution;
 
 public class Snack : Meal
 {
+
+    // Constructor.
     public Snack() : base("Snack", 0)
     {
 
@@ -13,6 +15,8 @@ public class Snack : Meal
         // Protein intake from a Snack.
         Console.WriteLine("Enter protein content for the Snack (grams)? ");
         double tooMuch;
+
+        // If the user did not input double, then it will ask again for correct input.
         while (!double.TryParse(Console.ReadLine(), out tooMuch))
         {
             Console.Write("Not correct. protein content for Snack (grams)? ");

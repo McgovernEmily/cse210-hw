@@ -19,6 +19,7 @@ public class UserStorage
         return _users.Find(user => user.GetName() == name);
     }
 
+    // Getting the _users from UserStorage Class.
     public List<User> GetAllUsers()
     {
         return _users;

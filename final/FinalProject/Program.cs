@@ -12,6 +12,7 @@ class Program
     {
         UserStorage userstorage = new UserStorage();
         MealTracker mealTracker = new MealTracker();
+        // File that will be used for the program for storing user info.
         string filePath = "protein_data.txt";
         FileManager fileManager = new FileManager(filePath);
 
@@ -31,6 +32,7 @@ class Program
         // If user does then if will find it.
         if (newOld == "yes")
         {
+            // Asking user for the name.
             Console.WriteLine("Enter your name:");
             string userName = Console.ReadLine();
             User user = userstorage.GetUser(userName);
@@ -43,6 +45,51 @@ class Program
             else
             {
                 Console.WriteLine("User not found. Please create a new account.");
+                // User information input.
+                Console.Write("Enter your name: ");
+                string name = Console.ReadLine();
+
+                // Asking the user for their weight.
+                Console.Write("Enter your weight (kg): ");
+                double weight;
+
+                // If the weight is not a double then it will ask again for correct input.
+                while (!double.TryParse(Console.ReadLine(), out weight))
+                {
+                    Console.Write("Not correct. Enter your weight (kg): ");
+                }
+
+                // Asking user for their gender.
+                Console.Write("Enter your gender: ");
+                string gender = Console.ReadLine();
+
+                // Asking the user for their activity level.
+                Console.Write("Enter your activity level (1 nothing - 5 Athletes and Bodybuilders): ");
+                int activity;
+
+                // If activity level is not an int, then it will ask again.
+                while (!int.TryParse(Console.ReadLine(), out activity))
+                {
+                    Console.Write("Not correct. Enter your activity level (1 nothing - 5 Athletes and Bodybuilders):");
+                }
+
+                // Calling the User class to get the CalculateProtein for finding the recommendation.
+                double recommended = User.CalculateProtein(weight, activity);
+                Console.WriteLine($"Here is your protein recommendation: {recommended}");
+
+                // Asking user for the protein goal they want to use.
+                Console.Write("What is your protein goal: ");
+                double proteinGoal;
+
+                // If the protein goal is not a double then it will ask again.
+                while (!double.TryParse(Console.ReadLine(), out proteinGoal))
+                {
+                    Console.Write("Not correct. Enter your protein goal: ");
+                }
+
+                // Adding the user information to the list.
+                userstorage.AddUser(name, weight, gender, activity, proteinGoal);
+                Console.WriteLine("Account Created!");
             }
         }
 
@@ -54,28 +101,39 @@ class Program
             Console.Write("Enter your name: ");
             string name = Console.ReadLine();
 
+            // Asking user for their weight.
             Console.Write("Enter your weight (kg): ");
             double weight;
+
+            // If user input not a double, then it will ask again.
             while (!double.TryParse(Console.ReadLine(), out weight))
             {
                 Console.Write("Not correct. Enter your weight (kg): ");
             }
 
+            // Asking user for their gender.
             Console.Write("Enter your gender: ");
             string gender = Console.ReadLine();
 
+            // Asking user for their activity level.
             Console.Write("Enter your activity level (1 nothing - 5 Athletes and Bodybuilders): ");
             int activity;
+
+            // If they input not an int, then it will ask again for the correct input.
             while (!int.TryParse(Console.ReadLine(), out activity))
             {
                 Console.Write("Not correct. Enter your activity level (1 nothing - 5 Athletes and Bodybuilders):");
             }
 
+            // Giving the user the recommended protein using User class and CalculateProtein.
             double recommended = User.CalculateProtein(weight, activity);
             Console.WriteLine($"Here is your protein recommendation: {recommended}");
 
+            // Asking the user their protein goal.
             Console.Write("What is your protein goal: ");
             double proteinGoal;
+
+            //  If the protein goal is not a double, then it will ask again for correct input.
             while (!double.TryParse(Console.ReadLine(), out proteinGoal))
             {
                 Console.Write("Not correct. Enter your protein goal: ");
@@ -99,21 +157,25 @@ class Program
             Console.WriteLine("5. Reset Protein");
             Console.WriteLine("6. Quit");
 
+            // Adding a protein entry.
             selection = Console.ReadLine();
             if (selection == "1")
             {
                 // Adding the meals / creating a meal.
                 mealTracker.AddMeals();
             }
+
+            // Listing the protein taken.
             else if (selection == "2")
             {
-                // List the protein intake verse the goal.
+                // Asking user for name to make sure it is correct user.
                 Console.WriteLine("Enter name:");
                 string userName = Console.ReadLine();
                 User user = userstorage.GetUser(userName);
 
                 Tracker tracker = new Tracker(user.GetProteinGoal());
 
+                // Finding the protein from each meal.
                 foreach (var meal in mealTracker.GetMeals())
                 {
                     tracker.IntakeUpdate(meal.GetProtein());
@@ -122,9 +184,11 @@ class Program
                 Console.WriteLine($"User: {user.GetName()}");
                 Console.WriteLine(tracker.GetProgress());
 
+                // Getting the sum.
                 double total = mealTracker.GetMeals().Sum(meal => meal.GetProtein());
                 double proteinGoal = user.GetProteinGoal();
 
+                // List the protein intake verse the goal.
                 if (total >= proteinGoal)
                 {
                     Console.WriteLine("You did it!!!!");
@@ -134,24 +198,32 @@ class Program
                     Console.WriteLine($"You need {proteinGoal - total} grams to reach your goal.");
                 }
             }
+
+            // Saving the user info to the file.
             else if (selection == "3")
             {
                 fileManager.SaveToFile(userstorage, mealTracker);
             }
+
+            // Loading the user info to the program.
             else if (selection == "4")
             {
                 fileManager.LoadFromFile(userstorage, mealTracker);
             }
+
+            // Having the user info cleared
             else if (selection == "5")
             {
                 mealTracker.ClearMeal();
 
+                // Verifying the name associated with the account.
                 Console.WriteLine("Enter name to verify reset: ");
                 string userName = Console.ReadLine();
                 User user = userstorage.GetUser(userName);
 
                 if (user != null)
                 {
+                    // Resetting the protein goal completion.
                     Tracker trackerRest = new Tracker(user.GetProteinGoal());
                     trackerRest.ResetProtein();
                     Console.WriteLine("Protein tracker is reset.");
@@ -162,6 +234,8 @@ class Program
                     Console.WriteLine("User not found and reset not initiated.");
                 }
             }
+
+            // Ending the program.
             else if (selection == "6")
             {
                 Console.WriteLine("GoodBye!!");
