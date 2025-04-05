@@ -10,7 +10,6 @@ public class Dinner : Meal
     // Protein intake for dinner.
     public override void EnterMealDetails()
     {
-
         // Asking user if they had chicken.
         Console.WriteLine("Did you eat chicken or beef for Dinner (C = Chicken, B = Beef, No = Not eat neither)?");
         string userInput = Console.ReadLine();
@@ -24,12 +23,10 @@ public class Dinner : Meal
             while (!double.TryParse(Console.ReadLine(), out chicken))
             {
                 Console.Write("Not correct. How many pounds of chicken did you eat? ");
-
             }
 
             // Calculating the protein of chicken and adding it to protein.
             _protein += chicken * 120;
-
         }
 
         // Add another else if for beef.
@@ -46,7 +43,6 @@ public class Dinner : Meal
 
             // Calculating the amount of protein for beef and adding it.
             _protein += beef * 77.88;
-
         }
 
 

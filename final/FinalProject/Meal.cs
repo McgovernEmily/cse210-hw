@@ -6,7 +6,6 @@ public abstract class Meal
     // Constructor
     public Meal(string name, double protein)
     {
-
         _name = name;
         _protein = protein;
     }

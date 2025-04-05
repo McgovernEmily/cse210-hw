@@ -34,7 +34,6 @@ public class FileManager
     // Loading a file into the program.
     public void LoadFromFile(UserStorage userStorage, MealTracker mealTracker)
     {
-
         // Seeing if the file is found.
         if (!File.Exists(_fileName))
         {
@@ -101,7 +100,6 @@ public class FileManager
             string line;
             while ((line = read.ReadLine()) != null)
             {
-
                 // Finding the user in the file.
                 var parts = line.Split(" | ");
                 if (parts[0] == "User" && parts[1].Equals(userName))
@@ -110,8 +108,6 @@ public class FileManager
                 }
             }
         }
-
         return false;
     }
-
 }

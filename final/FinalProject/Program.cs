@@ -16,7 +16,6 @@ class Program
         string filePath = "protein_data.txt";
         FileManager fileManager = new FileManager(filePath);
 
-
         string newOld = "";
         string selection = "";
 
@@ -228,7 +227,6 @@ class Program
                     trackerRest.ResetProtein();
                     Console.WriteLine("Protein tracker is reset.");
                 }
-
                 else
                 {
                     Console.WriteLine("User not found and reset not initiated.");

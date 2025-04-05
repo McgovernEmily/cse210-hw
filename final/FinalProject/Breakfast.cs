@@ -31,7 +31,6 @@ public class Breakfast : Meal
 
             // Calculating the protein for eggs.
             _protein += eggs * 6;
-
         }
 
         // If user did not have eggs if ask for protein intake.
@@ -49,7 +48,5 @@ public class Breakfast : Meal
             // Adding breakfast to protein.
             _protein += bGrams;
         }
-
     }
-
 }
